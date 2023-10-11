@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { AccountantEntity } from '../../accountant/entities/accountant.entity';
 
 @Entity()
@@ -11,4 +17,7 @@ export class AgencyEntity {
 
   @ManyToOne(() => AccountantEntity, (accountant) => accountant.agencies)
   accountant: AccountantEntity;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }

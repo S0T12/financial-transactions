@@ -1,4 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class ExchangeEntity {
@@ -8,6 +13,9 @@ export class ExchangeEntity {
   @Column({ type: 'varchar', length: 255 })
   currency: string;
 
-  @Column({ type: 'integer' })
-  conversionPrice: number;
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
+  conversionRate: number;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }

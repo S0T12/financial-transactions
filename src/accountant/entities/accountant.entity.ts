@@ -1,4 +1,10 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { AgencyEntity } from '../../agency/entities/agency.entity';
 
 @Entity()
@@ -11,4 +17,7 @@ export class AccountantEntity {
 
   @OneToMany(() => AgencyEntity, (agency) => agency.accountant)
   agencies: AgencyEntity[];
+
+  @CreateDateColumn()
+  createdAt: Date;
 }
